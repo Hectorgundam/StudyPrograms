@@ -17,7 +17,7 @@ daysLeft = timeLeft * 365
 # Determining how many weeks the user has left to live using 52 weeks a year as a baseline
 weeksLeft = timeLeft * 52
 
-# 
+# Determining how many months the user has left to live using 12 months a year as a baseline
 monthsLeft = timeLeft * 12
 
 # Printing out the results to the user in a morbid yet jokingly way
