@@ -21,6 +21,6 @@ if userNumber % 4 == 0:
             print("It's not a leap year.")
 
 else: 
-    # Not divisible evenly by 4, not a leap year
+    # Not divisible evenly by 4, it is not a leap year
     print("Tough luck, this is not a leap year. It's not divisible evenly by 4")
     
