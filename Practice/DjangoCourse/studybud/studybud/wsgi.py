@@ -1,5 +1,6 @@
 """
 WSGI config for studybud project.
+Web Service Gateway Interface (The actual server)
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
