@@ -39,32 +39,28 @@
 def findMedian(arr):
 
     # Test print to make sure arr was received as a parameter and check its contents 
-    # print(arr)
+    print("arr is entering function is ", arr)
 
-    # Function receives the array arr - a list of unsorted integers - as a parameter 
-    # Using a temporary array to store the contents of the array
+    
     # Need to sort the numbers
-    tempArr = arr
+    # Using 
+    arr.sort()
 
-    # Sorting the contents of the tempArray 
-    tempArr.sort()
+    # Test printing what the contents of the array are after sorting 
+    print("arr after sorting is ", arr)
 
-    # Test print to make sure tempArray's contents have been sorted 
-    # print(tempArr)
+    # Need a variable to store what the half-size of the array is
+    # This will act as the location of the median
+    half = len(arr) // 2
 
-    # Need to determine the median
-    # From what I understand the value of n should be bringing in the median and we can use it as our index 
+    # Test printing to see what the current value of half is 
+    print("current value of half is ", half)
 
-    # Test print to check what is the median 
-    # print(tempArr[n+1])
+    # Test printing to check if location arr[half] is our median
+    print("arr[half], the median, is ", arr[half])
 
-    # Test print to check that it's sorted 
-    return tempArr[n]
-
-
-
-
-
+    # Return the median 
+    return arr[half]
 
 if __name__ == '__main__':
     

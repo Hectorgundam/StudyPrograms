@@ -72,11 +72,26 @@ import sys
 
 def countingSort(arr): 
 
-    # Your code here 
-    temp = 0 
-
     # Test print to make sure arr was received as a parameter and check its contents 
-    print(arr)
+    # print(arr)
+
+    # Creating an array the same size of the one being received as a parameter 
+    # Initializing all of it's cells to zero for now 
+    # Will store the count of each number from 0 to 99
+    counter = [0] * 100
+
+    # Need to cycle through the elements in the array 
+    for num in arr: 
+
+        # Increasing the value of the number in the counter array
+        # Basically if the value of num is currently 5, then counter[5] will be increased
+        counter[num] += 1
+
+    # Test print to check the contents of counter after sorting
+    #print(counter)
+
+    return counter
+
 
 
 if __name__ == '__main__': 
