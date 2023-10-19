@@ -3,7 +3,7 @@
 # List comprehension practice 
 
 # As a lion trainer, you are taking part in an international lion exhibition
-# During the event lions from different teams enter and exit the showroom where lion experts can inspect and score them 
+# During the event lions from diff berent teams enter and exit the showroom where lion experts can inspect and score them 
 # Lions do not enter the showroom all at once, as that would cause too much commotion
 # The organizers of the event are letting them in and out based on a predefined schedule 
 # Before the show starts you get access to the schedule for your lions - but not for the others

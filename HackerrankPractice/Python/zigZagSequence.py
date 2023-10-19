@@ -1,4 +1,4 @@
-Incomplete
+# WIP - Incomplete
 
 # Zig Zag Sequence 
 # Python program 

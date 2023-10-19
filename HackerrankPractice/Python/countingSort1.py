@@ -90,6 +90,7 @@ def countingSort(arr):
     # Test print to check the contents of counter after sorting
     #print(counter)
 
+    # Return the contents of counter
     return counter
 
 

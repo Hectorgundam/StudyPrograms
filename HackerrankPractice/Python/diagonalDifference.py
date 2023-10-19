@@ -112,6 +112,9 @@ if __name__ == '__main__':
            [4, 5, 6],
            [10, 8, -12]]
 
+    # Printing input array 
+    print(arr)
+
     for _ in range(n): 
 
         # arr.append(list(map(int, input().rstrip().split())))
