@@ -1,5 +1,3 @@
-# Incomplete 
-
 # Battleship shots
 # Python program
 
@@ -30,7 +28,7 @@
 # shots = [[0,0],[0,1],[0,2],[1,1],[0,1], [1,4], [2,2], [2,4], [0,3], [0,0], [0,4]]
 
 # The ouput should be 
-# solution(grid,shots) = ["Missed", "Attacked ship A", "Attacked ship B", "Ship A sunk", "Already attacked", "Ship C sunk", "Missed", "Attacked ship b", "Missed", "Ship B sunk"] 
+# solution(grid,shots) = ["Missed", "Attacked ship A", "Attacked ship B", "Ship A sunk", "Already attacked", "Ship C sunk", "Missed", "Missed", "Attacked ship B", "Missed", "Ship B sunk"] 
 
 # Input/Ouput 
 
@@ -62,57 +60,112 @@
 def solution(grid, shots):
 
     # Test printing the contents of grid 
-    print("The contents of grid are ", grid)
+    # print("The contents of grid are ", grid)
 
     # Test printing the contents of shots 
-    print("The contents of shots are ", shots)
+    # print("The contents of shots are ", shots)
 
 
     # Dictionary for our ship cells 
     shipCount = {}
 
+    # Cycling through the rows in our grid 
     for row in grid: 
 
+        # Cycling through the cells in our rows
         for cell in row: 
 
+            # If the cell doesn't contains "." 
             if cell != ".": 
 
+                
                 shipCount[cell] = shipCount.get(cell, 0) + 1
 
-
+    # Creating an empty set for our attacked cells 
     attackedCells = set()
 
+    # Creating an empty list 
     results = []
 
+    # Cycling through the shots elements
     for shot in shots: 
 
+        # Test printing the contents of shot
+        # print("The contents of shot are ", shot)
+
+        # Our rows and columns will be equal to the values that shot contains as [x, y] (our coordinates)
         row, col = shot
 
+        # Test printing the contents of row 
+        # print("The contents of row are ", row)
+
+        # Test printing the contents of col
+        # print("The contents of col are ", col)
+
+        # Our cell will vbe equal to the the row and col values in our grid as [x, y] 
+        # This helps us check what value is within a specific row and column "." or "A-Z" 
         cell = grid[row][col] 
 
+        # Test printing the contents of cell 
+        # print("The contents of cell are ", cell)
+
+        # If our cell contains "." - an empty space 
         if cell == ".": 
 
+            # We will add "Missed" as the value obtained when the user shot at that specific coordinate 
+            # Using .append() to add the specified parameter to the end of our list 
             results.append("Missed")
 
+            # Stop the current iteration and go to the next one 
             continue 
+
+        # If the row and column value is in the attacked cells list 
         if (row, col) in attackedCells: 
 
+            # We will add "Already attacked" as the value obtained when the user shot at that specific coordinate
+            # Using .append() to add the specified parameter to the end of our list
             results.append("Already attacked")
 
+            # Stop the current iteration and go to the next one 
             continue
 
+        # If the row and column value is not in the attacked cells list then we add it to the dictionary
+        # Using .add() to add the specified parameter to our dictionary
         attackedCells.add((row, col))
 
+        # Test printing the contents of attackedCells
+        # print("The contents of attackedCells are ", attackedCells)
+
+        # We decrease the amount of the cell value in our shipCount by 1 
+        # This lets us know that one of our ships was hit and we decrease the amount of ship cells left 
         shipCount[cell] -= 1 
 
+        # Test printing the contents of shipCount[cell]
+        # print("The contents of shipCount[cell] are ", shipCount[cell])
+
+        # If the shipCount[cell] value reaches 0 
         if shipCount[cell] == 0: 
 
+            # We will add "Ship -specific ship- sunk"
+            # Using .append() to add the specified parameter to the end of our list 
+            # Using an f string - (f"{parameter}") - to display content 
             results.append(f"Ship {cell} sunk")
 
+            # Test printing the contents of results
+            # print("The contents of results are ", results)
+
+        # Otherwise a ship that still has cells left was hit 
         else: 
 
+            # We will add "Attacked ship -specific ship-"
+            # Using .append() to add the specified parameter to the end of our list 
+            # Using an f string - (f"{parameter}") - to display content 
             results.append(f"Attacked ship {cell}")
+            
+            # Test printing the contents of results
+            # print("The contents of results are ", results)
 
+    # Return the contents of results
     return results
 
 

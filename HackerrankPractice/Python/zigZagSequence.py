@@ -1,5 +1,3 @@
-# WIP - Incomplete
-
 # Zig Zag Sequence 
 # Python program 
 
@@ -31,113 +29,96 @@
 # Output format
 # For each test cases, print the elements of the transformed zigzag sequence in a single line 
 
-def findZigZagSequence(a, n): 
+def findZigZagSequence(a, n):
 
-    # Test printing to check that a was received as a parameter and view its current contents 
-    print("a entered function and is ", a)
+    # Test printing the contents of a 
+    print("The contents of a are ", a)
 
-    # Test printing to check that n was received as a parameter and view its current contents 
-    print("n entered function and is ", n)
+    # Test printing the contents of n 
+    print("The contents of n are ", n) 
 
-    # Need to sort the elements in the array 
-    # Using the method sort(values) to sort the array 
+    # Sorting the contents of a 
+    # Using .sort() to sort the contents in ascending order for now 
     a.sort()
 
-    # Test printing array a after sorting 
-    print("The contents of a after sorting are ", a) 
+    # Test printing the sorted contents of a 
+    print("The contents of a after sorting are ", a)
 
-    # Variable mid will be equal to the contents of the cell after the current value of n divided by 2 
-    mid = int((n+1) / 2) - 1
+    # Variable mid will be equal to the integer value of the contents of n + 1, divided by 2 and then subtracted 1 
+    # This will give us the midline number 
+    mid = int((n + 1)/2)-1
 
-    # Test print to check the contents of mid 
-    print("The content of mid is ", mid)
+    # Test printing the contents of mid 
+    print("The contents of mid are ", mid)
 
-    # 
+    # The contents of a[mid] and a[n-1] will be equal to the contents of a[n-1] and a[mid] respectively 
     a[mid], a[n-1] = a[n-1], a[mid]
 
-    # Test print the contents of a[mid]
-    print("The contents of a[mid] are", a[mid])
+    # Test printing the contents of a[mid] 
+    print("The contents of a[mid] are ", a[mid])
 
-    # Test print the contents of a[n-1]
-    print("The contents of a[n-1]", a[n-1])
+    # Test printing the contents of a[n-1]
+    print("The contents of a[n-1] are ", a[n-1])
 
-    # Test print the contents of a[mid] after swapping
-    print("The contents of a[mid] after swapping are ", a[mid])
-
-    # Test print the contents a[n-1] after swapping
-    print("The contents of a[n-1] after swapping are ", a[n-1])
-
+    # The contents of st will be equal to the contents of mid after adding 1 to it
     st = mid + 1
 
-    # Test print the contents of st 
-    print("The contents of st are ", st)
+    # Test printing the contents of st 
+    print("The contents of st are ", st) 
 
+    # The contents of ed will be equal to the contents of n after subtracting 2 to it 
     ed = n - 2
 
-    # Test print the contents of ed 
+    # Test printing the contents of ed 
     print("The contents of ed are ", ed)
 
-    
-    while(st <= ed): 
+    # Cycling while the contents of st are less then or equal to the contents of ed 
+    while(st <= ed):
 
-        # Test printing the current value of a[st]
-        print("The current value of a[st] is ", a[st])
+        # Test printing if the contents of st are less than or equal to ed 
+        print("The contents of st <= ed are ", (st<=ed))
 
-        # Test printing the current value of a[ed]
-        print("The current value of a[ed] is", a[ed])
-
-        # Swapping values 
+        # The contents of a[st] and a[ed] will be equal to the contents of a[ed] and a[st] respectively 
         a[st], a[ed] = a[ed], a[st]
 
-        # Test printing the current valies of a[st] and a[ed] after swapping
-        # Test printing the current value of a[st] after swapping
-        print("The current value of a[st] is ", a[st])
+        # Test printing the contents of a[st]
+        print("The contents of a[st] are ", a[st])
 
-        # Test printing the current value of a[ed] after swapping
-        print("The current value of a[ed] is", a[ed])
+        # Test printing the contents of a[ed]
+        print("The contents of a[ed] are ", a[ed])
+    
+        # The content of st will be equal to the current contents of st increased by 1 
+        st = st + 1
 
-        # Test printing the current value of st 
-        print("The current value of st is", st)
+        # Test printing the contents of st 
+        print("The contents of st are ", st) 
 
-        # Test printing the current value of ed
-        print("The current value of ed is ", ed)
+        # The content of ed will be equal to the current contents of ed decreased by 1 
+        ed = ed - 1
 
-        # Incrementing the value of st by 1
-        st = st + 1 
+        # Test printing the contents of ed 
+        print("The contents of ed are ", ed)
 
-        # Incrementing the value of ed by 1
-        ed = ed - 1 
+    # Cycling through the array elements while the value of i is within the range of the value of n 
+    for i in range (n):
 
-        # Test printing the current value of st 
-        print("The current value of st after increment is", st)
+        # if the current value of i is equal to the current value of n decreased by 1 
+        if i == n-1:
 
-         # Test printing the current value of ed
-        print("The current value of ed after incrementing is ", ed)
+            # Test printing if i == n-1 
+            print("The current contents of i == n-1 is ", (i==n-1))
 
-
-    for i in range(n): 
-
-        # Test printing the current value of i
-        print("The current value of i is ", i)
-
-        # If the current value of i is equal to te location of n-1
-        if i == n-1: 
-
-            # Test printing the current value of n-1
-            print("The current value of n-1 is ",n-1)
-
-            # Print the value of the current location that i is indexing
+            # We print the array cell of i index 
             print(a[i])
 
-            # Test printing notification that we're exiting this function
-            print("Leaving the if i == n-1 conditional statement")
+        # Otherwise
+        else:
 
-        else: 
-
-            # Testing printing that we entered into the else conditional
-            print('Entered the else conditional')
-
+            # We print the array cell of i index with a space at the end 
             print(a[i], end = ' ')
+
+    # We return nothing from the function since the printing was done from within it 
+    return
 
 if __name__ == '__main__':
 
@@ -146,13 +127,15 @@ if __name__ == '__main__':
     # for cs in range(test_cases): 
 
     # n = int(input())
-        n = 5
+        # n = 5
+        n = 7
 
     # Test print to check the contents of n 
         # print("The value of n is ", n)
 
     # a = list(map(int, input().split()))
-        a = [2,3,5,1,4]
+        # a = [2,3,5,1,4]
+        a = [1,2,3,4,5,6,7]
 
     # Test print the contents of a 
         # print("The contents of a are ", a)
