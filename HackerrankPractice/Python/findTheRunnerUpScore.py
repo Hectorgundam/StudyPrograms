@@ -21,9 +21,76 @@
 if __name__ == '__main__':
 
     # Asking the user for input 
-    n = int(input())
+    # n = int(input())
 
-    arr = map(int, input().split())
+    n = 5
+
+    # Test printing the contents of n 
+    # print("The contents of n are", n)
+
+    # arr = map(int, input().split())
+
+    arr = [2, 3, 6, 6, 5]
+
+    # Test printing the contents of arr 
+    # print("The contents of arr are", arr)
+
+    maxNum = max(arr)
+
+    # Test printing the contents of maxNum
+    # print("The contents of maxNum are", maxNum)
+
+    runnerUp = None
+
+    # Test printing the contents of runnerUp 
+    # print("The contents of runnerUp are", runnerUp)
+
+    # Cycling through the scores in our arr 
+    for score in arr:
+
+        # Test printing the current score 
+        # print("The contents of score are", score)
+
+        # If the score is equal to the maxNum then we pass up on it 
+        # Since that would be the maximum, not the runner up 
+        if score == maxNum: 
+
+            # Test printing if we're passing 
+            # print("Passing, the contents of score == maxNum")
+            
+            pass
+
+        # If runnerUp is currently empty, lets give it the value of the current score  
+        elif runnerUp == None: 
+
+            # Test printing if runnerUp is being assigned its first value
+            # print("Assigning first value to runnerUp, the contents of runnerUp were None")
+
+            runnerUp = score
+
+            # Test printing the contents of runnerUp
+            # print("The contents of runnerUp are", runnerUp)
+
+        # If the current score is higher than the runnerUp value then make the runnerUp value equal to the current score value     
+        elif score > runnerUp: 
+
+            # Test printing if score is greater than runnerUp 
+            # print("The contents of score > runnerUp, changing contents of runnerUp")
+
+            runnerUp = score
+
+            # Test printing the contents of runnerUp 
+            # print("The contents of runnerUp are", runnerUp)
+
+    # Test printing the final value of runnerUp
+    # print("The contents of runnerUp are", runnerUp)
+
+    print(runnerUp)
+
+        
+
+
+
 
     
 

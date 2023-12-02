@@ -1,7 +1,9 @@
 # WIP - Incomplete
 
 class Solution:
+
     def longestPalindrome(self, s: str) -> str:
+        
         n = len(s)  # Count how many letters are in the input word
         
         # If the word has only 1 or 0 letters, it's already a special word (palindrome)
