@@ -1,5 +1,6 @@
 # Fizzbuzz
 # Python program
+# Program that uses conditionals to alter the contents of a numbered list based on parameters given
 
 # Requirements:
 #   - print list of integers 1 through 105
