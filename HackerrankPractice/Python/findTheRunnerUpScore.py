@@ -18,6 +18,14 @@
 # Explanation
 # Given list is [2,3,6,6,5]. The maximum score is 6, second maximum is 5. Hence, we print 5 as the runner-up score. 
 
+# In the initial problem the code showed as follows 
+# n = int(input())
+    
+# arr = map(int, input().split())
+
+# In order to get the code to work, I had to convert the map object into a list using list(mapObject)
+# tempArr =  list(arr)
+
 if __name__ == '__main__':
 
     # Asking the user for input 
