@@ -1,4 +1,5 @@
 # Find the Runner-Up Score 
+# Python program
 
 # Given the participant's score sheet for your University Sports Day, you are required to find the runner-up score. 
 # You are given n scores. Store them in a list and find the score of the runner-up. 
@@ -31,14 +32,33 @@ if __name__ == '__main__':
     # Asking the user for input 
     # n = int(input())
 
-    n = 5
-
     # Test printing the contents of n 
     # print("The contents of n are", n)
 
     # arr = map(int, input().split())
+    # Test case A 
+    # n = 5
+    # arr = [2, 3, 6, 6, 5]
 
-    arr = [2, 3, 6, 6, 5]
+    # Test case B
+    # n = 4
+    # arr = [57, 57, -57, 57]
+
+    # Test case C 
+    # n = 5
+    # arr = [8, 7, 6, 5, 4]
+
+    # Test case D 
+    # n = 4
+    # arr = [1, -1, -2, -1]
+
+    # Test case E 
+    # n = 5
+    # arr = [6, 4, 5, 6, 6]
+
+    # Test case F 
+    n = 10
+    arr = [6, 6, 6, 6, 6, 6, 6, 6, 6, 5]
 
     # Test printing the contents of arr 
     # print("The contents of arr are", arr)
