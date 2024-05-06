@@ -1,3 +1,5 @@
+# In progress
+
 # Nested Lists 
 # Python program 
 
@@ -58,6 +60,10 @@ if __name__ == '__main__':
     # Creating a list that we can use to append/add the inputs we receive
     studentScores = []
 
+    # Creating a list that we can use to store the scores 
+    # Here we'll store the scores without duplicates, that way we can find the second lowest score 
+    scores = []
+
     # For this exercise we go about it a bit differently since the platform is providing the input and we have to 
     # somehow read it and assign it 
     # Using a for loop to cycle through the inputs within the range given
@@ -94,6 +100,8 @@ if __name__ == '__main__':
     print()
 
     # The main factor I'm considering is the scores since we're trying to get the second lowest grade 
-    # The problem is that we can't just sort the list of scores 
+    # The problem is that we can't just sort the list of scores because there's a chance we might have duplicates and 
+    # that gets in the way of getting the second lowest value 
+
 
 
