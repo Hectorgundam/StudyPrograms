@@ -1,5 +1,3 @@
-// Name: Charleen Ramirez rios
-// ID: R00417213
 // Total strings calculation = 7!/(7-7)! = 5040
 
 // String manipulation
