@@ -1,8 +1,4 @@
-# Assignment: Tarea Mapa - Aplicacion de Maquinas de Estados Finitos (MEF) 
-# Prof Jose Navarro Figueroa 
-# COMP2502 - 202430-77704
-# Charleen Ramirez Rios 
-# R00417213
+# Assignment: Map - Aplicatin of Finite State Machine 
 
 # Game that places the user in a starting point with the goal of the user being able to make their way to the target location 
 
