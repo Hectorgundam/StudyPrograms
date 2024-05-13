@@ -1,4 +1,4 @@
-# Assignment: Map - Aplicatin of Finite State Machine 
+# Assignment: Map - Aplication of Finite State Machine 
 
 # Game that places the user in a starting point with the goal of the user being able to make their way to the target location 
 
