@@ -57,51 +57,50 @@
 
 if __name__ == '__main__': 
 
-    # Creating a list that we can use to append/add the inputs we receive
-    studentScores = []
+# In the code provided we can see that they are taking input for the names of the students and the scores as 
+# two separate lists 
 
-    # Creating a list that we can use to store the scores 
-    # Here we'll store the scores without duplicates, that way we can find the second lowest score 
-    scores = []
+    # name = input()
 
-    # For this exercise we go about it a bit differently since the platform is providing the input and we have to 
-    # somehow read it and assign it 
-    # Using a for loop to cycle through the inputs within the range given
-    # for _ in range(int(input())): 
+    # score = float(input())
 
-    #     # This is done by name = input() for the names and score = float(input()) 
-    #     # In the case of score = float(input()) we can see that it's using the float() method to convert the input received 
-    #     # into a float value 
+   # In our case we will hard code those lists for ease of access 
 
-    #     name = input()
+    # Cycling through the values while they are within the specified range/number of students 
+    
+    # List of names 
+    names = ["Harry", "Berry", "Tina", "Akriti", "Harsh"]
 
-    #     score = float(input())
+     # Testing printing the contents of name 
+    print("The contents of name are: ", names)
 
-    #     # Once a name and it's respective score have been obtained, we're adding/appending those to our nested list 
-    #     studentScores.append([name, score])
+    # List of scores 
+    scores = [37.21, 37.21, 37.2, 41, 39]
 
-    # # Test print 
-    # print("The contents of studentScores are: ")
-    # print(studentScores)
+    # Test printing the contents of score 
+    print("The contents of score are: ", scores)
 
-    # For the purpose of the program running outside of the platform environment, we'll use the equivalent / the result 
-    # of the code above
-    # studentScores will be our nested lists of student names with their respective scores 
-    studentScores = [['Harry', 37.21], ['Berry', 37.21], ['Tina', 37.2], ['Akriti', 41], ['Harsh', 39]]
+    # Will contain a record of the students names with their associated scores 
+    # Now that we have the lists, we need a way to join or associate these with each other 
+    # We will append the name and score to records
+    records = list(zip(names, scores))
 
-    # Using this as a spacer to ease readability of our output for now
-    print()
+     # Test printing the contents of records 
+    print("The contents of records are: ", records)
 
-    # Test print 
-    print("The contents of studentScores are: ")
-    print(studentScores)
+    # Sorting records by grade 
+    sortedScores = sorted(set(scores))
 
-    # Using this as a spacer to ease readability of our output for now
-    print()
+    # Getting the second lowest grade 
+    secondLowestGrade = sortedScores[1]
 
-    # The main factor I'm considering is the scores since we're trying to get the second lowest grade 
-    # The problem is that we can't just sort the list of scores because there's a chance we might have duplicates and 
-    # that gets in the way of getting the second lowest value 
+    # Getting the names of students with the second lowest grade 
+    secondLowestGradeStudents = [name for name, score in records if score == secondLowestGrade]
 
+    # Sorting the names alphabetically 
+    secondLowestGradeStudents.sort() 
 
+    # Printing the names of the students 
+    for student in secondLowestGradeStudents: 
 
+        print(student)

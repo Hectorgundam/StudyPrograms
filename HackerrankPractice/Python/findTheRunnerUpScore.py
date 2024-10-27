@@ -45,8 +45,8 @@ if __name__ == '__main__':
     # arr = [57, 57, -57, 57]
 
     # Test case C 
-    # n = 5
-    # arr = [8, 7, 6, 5, 4]
+    n = 5
+    arr = [8, 7, 6, 5, 4]
 
     # Test case D 
     # n = 4
@@ -57,8 +57,8 @@ if __name__ == '__main__':
     # arr = [6, 4, 5, 6, 6]
 
     # Test case F 
-    n = 10
-    arr = [6, 6, 6, 6, 6, 6, 6, 6, 6, 5]
+    # n = 10
+    # arr = [6, 6, 6, 6, 6, 6, 6, 6, 6, 5]
 
     # Test printing the contents of arr 
     # print("The contents of arr are", arr)

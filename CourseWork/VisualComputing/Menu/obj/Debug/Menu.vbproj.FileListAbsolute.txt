@@ -1,0 +1,12 @@
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.vbproj.AssemblyReference.cache
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.frmMenuTab.resources
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.Resources.resources
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.vbproj.GenerateResource.cache
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.vbproj.CoreCompileInputs.cache
+C:\Users\death\source\repos\Menu\bin\Debug\Menu.exe.config
+C:\Users\death\source\repos\Menu\bin\Debug\Menu.exe
+C:\Users\death\source\repos\Menu\bin\Debug\Menu.pdb
+C:\Users\death\source\repos\Menu\bin\Debug\Menu.xml
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.exe
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.xml
+C:\Users\death\source\repos\Menu\obj\Debug\Menu.pdb

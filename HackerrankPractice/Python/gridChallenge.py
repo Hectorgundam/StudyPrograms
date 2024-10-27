@@ -1,5 +1,3 @@
-# Incomplete
-
 # Grid Challenge 
 # Python Program 
 
@@ -75,21 +73,26 @@ import random
 import re
 import sys
 
+# Defining function gridChallenge that takes in the grid as its parameter 
 def gridChallenge(grid):
 
-    # Sort each row and create a new grid
+    # Sort each row alphabetically and create a new grid of sorted rows called sorted_grid 
     sorted_grid = [''.join(sorted(row)) for row in grid]
 
     # Check if columns are sorted
-    # For each col in the range of the 
+    # For each col within the range of the sorted_grid starting with the first row as its starting index 
     for col in range(len(sorted_grid[0])):
 
+        # For each row in the range of sorted_grid with the second row as it's starting index 
         for row in range(1, len(sorted_grid)):
 
+            # If the character in the current row and column is less than the character in the previous row (same column) 
             if sorted_grid[row][col] < sorted_grid[row - 1][col]:
 
+                # We return NO if any column is not sorted  
                 return 'NO'
 
+    # We return YES if all the columns are sorted 
     return 'YES'
 
 if __name__ == '__main__':
