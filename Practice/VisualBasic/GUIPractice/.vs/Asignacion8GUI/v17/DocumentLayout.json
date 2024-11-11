@@ -1,0 +1,72 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\death\\source\\repos\\Asignacion8GUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C6EAC34F-AFD8-4DAD-A2F9-E8D17AEA5606}|Asignacion8GUI.vbproj|c:\\users\\death\\source\\repos\\asignacion8gui\\my project\\application.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6EAC34F-AFD8-4DAD-A2F9-E8D17AEA5606}|Asignacion8GUI.vbproj|solutionrelative:my project\\application.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6EAC34F-AFD8-4DAD-A2F9-E8D17AEA5606}|Asignacion8GUI.vbproj|C:\\Users\\death\\source\\repos\\Asignacion8GUI\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{C6EAC34F-AFD8-4DAD-A2F9-E8D17AEA5606}|Asignacion8GUI.vbproj|solutionrelative:form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C6EAC34F-AFD8-4DAD-A2F9-E8D17AEA5606}|Asignacion8GUI.vbproj|C:\\Users\\death\\source\\repos\\Asignacion8GUI\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{C6EAC34F-AFD8-4DAD-A2F9-E8D17AEA5606}|Asignacion8GUI.vbproj|solutionrelative:form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Application.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\death\\source\\repos\\Asignacion8GUI\\My Project\\Application.Designer.vb",
+              "RelativeDocumentMoniker": "My Project\\Application.Designer.vb",
+              "ToolTip": "C:\\Users\\death\\source\\repos\\Asignacion8GUI\\My Project\\Application.Designer.vb",
+              "RelativeToolTip": "My Project\\Application.Designer.vb",
+              "ViewState": "AgIAABIAAAAAAAAAAAAawCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-10-21T19:38:36.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.vb",
+              "DocumentMoniker": "C:\\Users\\death\\source\\repos\\Asignacion8GUI\\Form1.vb",
+              "RelativeDocumentMoniker": "Form1.vb",
+              "ToolTip": "C:\\Users\\death\\source\\repos\\Asignacion8GUI\\Form1.vb",
+              "RelativeToolTip": "Form1.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-10-21T19:36:53.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\death\\source\\repos\\Asignacion8GUI\\Form1.vb",
+              "RelativeDocumentMoniker": "Form1.vb",
+              "ToolTip": "C:\\Users\\death\\source\\repos\\Asignacion8GUI\\Form1.vb [Design]",
+              "RelativeToolTip": "Form1.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2024-10-21T18:18:05.47Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

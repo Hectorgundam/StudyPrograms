@@ -1,0 +1,12 @@
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.vbproj.AssemblyReference.cache
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.Form1.resources
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.Resources.resources
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.vbproj.GenerateResource.cache
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.vbproj.CoreCompileInputs.cache
+C:\Users\death\source\repos\Archivos\bin\Debug\Archivos.exe.config
+C:\Users\death\source\repos\Archivos\bin\Debug\Archivos.exe
+C:\Users\death\source\repos\Archivos\bin\Debug\Archivos.pdb
+C:\Users\death\source\repos\Archivos\bin\Debug\Archivos.xml
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.exe
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.xml
+C:\Users\death\source\repos\Archivos\obj\Debug\Archivos.pdb

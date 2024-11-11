@@ -1,0 +1,14 @@
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\bin\Debug\net8.0\WhatsYourName.exe
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\bin\Debug\net8.0\WhatsYourName.deps.json
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\bin\Debug\net8.0\WhatsYourName.runtimeconfig.json
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\bin\Debug\net8.0\WhatsYourName.dll
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\bin\Debug\net8.0\WhatsYourName.pdb
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\WhatsYourName.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\WhatsYourName.AssemblyInfoInputs.cache
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\WhatsYourName.AssemblyInfo.vb
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\WhatsYourName.vbproj.CoreCompileInputs.cache
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\WhatsYourName.dll
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\refint\WhatsYourName.dll
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\WhatsYourName.pdb
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\WhatsYourName.genruntimeconfig.cache
+C:\Users\death\source\repos\WhatsYourName\WhatsYourName\obj\Debug\net8.0\ref\WhatsYourName.dll
