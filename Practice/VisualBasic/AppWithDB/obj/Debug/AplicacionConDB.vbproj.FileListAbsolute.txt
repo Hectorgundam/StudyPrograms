@@ -1,0 +1,14 @@
+C:\Users\death\source\repos\AplicacionConDB\bin\Debug\Company.mdf
+C:\Users\death\source\repos\AplicacionConDB\bin\Debug\Company_log.ldf
+C:\Users\death\source\repos\AplicacionConDB\bin\Debug\AplicacionConDB.exe.config
+C:\Users\death\source\repos\AplicacionConDB\bin\Debug\AplicacionConDB.exe
+C:\Users\death\source\repos\AplicacionConDB\bin\Debug\AplicacionConDB.pdb
+C:\Users\death\source\repos\AplicacionConDB\bin\Debug\AplicacionConDB.xml
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.vbproj.AssemblyReference.cache
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.Form1.resources
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.Resources.resources
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.vbproj.GenerateResource.cache
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.vbproj.CoreCompileInputs.cache
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.exe
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.xml
+C:\Users\death\source\repos\AplicacionConDB\obj\Debug\AplicacionConDB.pdb
