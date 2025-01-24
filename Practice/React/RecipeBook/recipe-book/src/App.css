@@ -1,0 +1,77 @@
+/* Global Box Sizing testing */
+* {
+  box-sizing: border-box;
+}
+
+
+/* Center the entire application */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vh;
+  background-color: #f8f9fa; /* Light background color for better visibility */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style the content area */
+.app-content {
+  max-width: 800px; /* Adjust the width of the application */
+  background-color: white; /* Background color for the content */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better focus */
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+
+body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ background-color: #F8F9FA;
+ color: #333;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin: 20px auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+input, textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+}
+
+button { 
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056B3;
+}
+
+div {
+  margin: 1opx auto;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background-color: white;
+}
