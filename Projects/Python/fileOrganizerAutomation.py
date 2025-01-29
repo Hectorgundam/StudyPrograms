@@ -34,12 +34,14 @@ sorted_base_dir = os.path.join(downloads_dir, "SortedFiles")
 # Define subfolders for different file types
 sorted_folders = {
     "Documents": os.path.join(sorted_base_dir, "SortedDocuments"),
-    "Images": os.path.join(sorted_base_dir, "SortedDocuments"),
+    "Images": os.path.join(sorted_base_dir, "SortedImages"),
     "Audio": os.path.join(sorted_base_dir, "SortedAudio"),
     "Video": os.path.join(sorted_base_dir, "SortedVideo"),
     "Files": os.path.join(sorted_base_dir, "SortedFiles"),  # For archives, executables, etc.
     "Other": os.path.join(sorted_base_dir, "SortedOther"),  # For unknown file types
-    "Folders": os.path.join(sorted_base_dir, "SortedFolders") # For folders
+    "Folders": os.path.join(sorted_base_dir, "SortedFolders"), # For folders
+    "Pepakura": os.path.join(sorted_base_dir, "SortedPepakura") # Pepakura File (Custom input for files I use in papercraft)
+
 }
 
 # Ensure all sorting folders exist
@@ -59,6 +61,7 @@ extensions = {
 
     # Image file extensions
     ".jpeg": "Images",
+    ".jpg": "Images",
     ".png": "Images",
     ".svg": "Images",
     ".webp": "Images",
@@ -79,6 +82,11 @@ extensions = {
     ".tar": "Files",
     ".exe": "Files",
     ".dmg": "Files",
+
+    # Pepakura File (Custom input for files I use in papercraft)
+    ".pdo": "Pepakura",
+
+    
 }
 
 # Function to handle duplicate files
