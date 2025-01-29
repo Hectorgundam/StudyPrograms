@@ -1,98 +1,146 @@
-# WIP 
 
-# File Organizer Automation 
-# Python program 
+# File Organizer
+# Python Program 
 
-# Program that automates the organization of messy files in a selected folder
-# The program uses a list of extensions as reference to complete the organization and the list can be updated to include more
-# extensions. 
+# Program that automates the organization of messy files in the Downloads folder
+# The program has a list of extensions that it works on and more can be added as desired 
 
-# Program creates new folders if the target folder to move the file to doesn't exist 
-# If the folder does exist then it just moves the file to the target folder to move to 
+# The program uses a folder called SortedFiles inside the Downloads folder as the folder where it moves the sorted files 
+# If the folder doesn't exist, a new one will be created
 
-# The program only moves files within the same folder / only works within the same directory 
-# Future scope - make it move files to other directories 
+# SortedFiles folder structure is as follows 
+# SortedDocuments - For files with extensions: txt, doc, docx, pdf, pptx, xlsx 
+# SortedAudio - For files with extensions: mp3, wav, flac
+# SortedVideo - For files with extensions: mp4, avi, flac
+# SortedFiles - For files with extensions: zip, rar, tar, exe, dmg
+# SortedOther - For any other files that don't match the previous ones 
+
+# Additional file types can be added to the dictionary as needed 
 
 
-# Library that will allow the program to use operating system functions (access files and directories in our case)
-import os 
+# Library - allows the use of operating system functions (access files and directories in our case)
+import os
+# Library - allows files movement 
+import shutil
+# Library - allows the use of current date and time functions
+import datetime
 
-# Library that will allow the program to use file movement 
-import shutil 
+# Define base directory (Downloads)
+downloads_dir = os.path.join(os.path.expanduser("~"), "Downloads")
 
-# We're creating a variable called directory and assigning it a path
-# In this case the path that's being assigned is the folder we want to organize 
-# expanduser helps us not have to type in the full path, it does it for you as long as you give it the target folder 
-directory = os.path.join(os.path.expanduser("~"), "Downloads")
+# Define the main sorting directory inside Downloads
+sorted_base_dir = os.path.join(downloads_dir, "SortedFiles")
 
-# Defining the extensions we want the program to target and what folders they should be moved to 
-# "targetExtensionInSelectedFolder": "targetFolderToMoveFileTo"
-extensions = { 
-    # Testing 
-    ".txt": os.path.join(os.path.expanduser("~"), "Documents"),
-
-    # ".jpg": "Images", 
-    # ".png": "Images", 
-    # ".gif": "Images", 
-    # ".mp4": "Videos", 
-    # ".avi": "Videos", 
-    # ".doc": "Documents", 
-    # ".pdf": "Documents",
-    # ".pptx": "Documents", 
-    # ".xlxs": "Documents",
-    # ".txt": "Documents", 
-    # ".zip": "Documents",
-    # ".mp3": "Music", 
-    # ".wav": "Music", 
+# Define subfolders for different file types
+sorted_folders = {
+    "Documents": os.path.join(sorted_base_dir, "SortedDocuments"),
+    "Images": os.path.join(sorted_base_dir, "SortedDocuments"),
+    "Audio": os.path.join(sorted_base_dir, "SortedAudio"),
+    "Video": os.path.join(sorted_base_dir, "SortedVideo"),
+    "Files": os.path.join(sorted_base_dir, "SortedFiles"),  # For archives, executables, etc.
+    "Other": os.path.join(sorted_base_dir, "SortedOther"),  # For unknown file types
+    "Folders": os.path.join(sorted_base_dir, "SortedFolders") # For folders
 }
 
-# Looping through the file names in the directory that we selected 
-for filename in os.listdir(directory): 
+# Ensure all sorting folders exist
+for folder in sorted_folders.values():
+    os.makedirs(folder, exist_ok=True)
 
-    # Define the file path
-    # Which is going to be the directory and then the file name 
-    file_path = os.path.join(directory, filename)
+# Define file type categories and their destination folders
+extensions = {
 
-    # Making sure what's being selected is a file and not a directory 
-    if os.path.isfile(file_path): 
+    # Document file extensions
+    ".txt": "Documents",
+    ".doc": "Documents",
+    ".docx": "Documents",
+    ".pdf": "Documents",
+    ".pptx": "Documents",
+    ".xlsx": "Documents",
 
-        # We split the filename out into the variable extension 
-        # .lower() to make everything lowercase (to make sure we don't miss anything because of naming conventions)
-        extension = os.path.splitext(filename) [1].lower()
+    # Image file extensions
+    ".jpeg": "Images",
+    ".png": "Images",
+    ".svg": "Images",
+    ".webp": "Images",
 
-        # If this extension is in our list of extensions 
-        if extension in extensions: 
+    # Audio file extensions
+    ".mp3": "Audio",
+    ".wav": "Audio",
+    ".flac": "Audio",
 
-            # 
-            folder_name = extensions[extension]
+    # Video file extensions
+    ".mp4": "Video",
+    ".avi": "Video",
+    ".mov": "Video",
 
-            # Folder path that will join the directory and the folder name 
-            folder_path = os.path.join(directory, folder_name)
+    # Files (Archives, executables) file extensions
+    ".zip": "Files",
+    ".rar": "Files",
+    ".tar": "Files",
+    ".exe": "Files",
+    ".dmg": "Files",
+}
 
-            # Making a new directory with the folder_path and if it exists make it true 
-            os.makedirs(folder_path, exist_ok=True)
+# Function to handle duplicate files
+def get_unique_filename(destination_path):
+    """Ensures the file/folder name is unique before moving by appending a number."""
+    if not os.path.exists(destination_path):
+        return destination_path
 
-            # 
-            destination_path = os.path.join(folder_path, filename)
+    base, extension = os.path.splitext(destination_path)
+    counter = 1
 
-            # Moving the current file_path to the destination_path 
-            shutil.move(file_path, destination_path)
+    while os.path.exists(destination_path):
+        destination_path = f"{base}({counter}){extension}"
+        counter += 1
 
-            # Notifying the user that a file has been moved and notifying them of the location it was moved to
-            print(f"Moved {filename} to {folder_name} folder.")
+    return destination_path
 
-        # 
-        else: 
+# Log file path
+log_file_path = os.path.join(sorted_base_dir, "file_organizer_log.txt")
 
-            # Notifying the user that a file was skipped because the extension was not in the list available 
-            # for the program to handle 
-            print(f"Skipped {filename}. File extension hasn't been added to list for organizing.")
+# Open log file for writing
+with open(log_file_path, "w") as log_file:
+    log_file.write(f"File Organizer Log - {datetime.datetime.now()}\n")
+    log_file.write("=" * 50 + "\n")
 
-    # 
-    else:
+    # Loop through items in the Downloads folder
+    for filename in os.listdir(downloads_dir):
+        file_path = os.path.join(downloads_dir, filename)
 
-        # Notifying user that a folder/directory was skipped 
-        print(f"Skipped {filename}. It's a folder/directory.") 
+        # Skip the main SortedFiles directory to prevent moving itself
+        if filename == "SortedFiles":
+            continue
 
-# Notifying user that the organization is complete 
-print("File organization completed!")
+        # Determine target folder (based on extension for files, or "Folders" for directories)
+        if os.path.isfile(file_path):
+            extension = os.path.splitext(filename)[1].lower()
+            target_folder = sorted_folders.get(extensions.get(extension, "Other"))
+        else:  # If it's a folder, move it to SortedFolders
+            target_folder = sorted_folders["Folders"]
+
+        # Define the destination path
+        destination_path = os.path.join(target_folder, filename)
+
+        # Ensure the file/folder name is unique before moving
+        unique_destination_path = get_unique_filename(destination_path)
+
+        # Move the file/folder
+        shutil.move(file_path, unique_destination_path)
+
+        # Log the action
+        log_file.write(f"Moved: {filename} -> {unique_destination_path}\n")
+
+    log_file.write("=" * 50 + "\n")
+    log_file.write("File organization completed!\n")
+
+# Notify the user
+print(f"File organization completed! Log saved to {log_file_path}")
+
+# Open the log file
+if os.name == "nt":  # Windows
+    os.startfile(log_file_path)
+elif os.name == "posix":  # macOS or Linux
+    os.system(f"open '{log_file_path}'")
+else:
+    print(f"Please open the log file manually: {log_file_path}")
