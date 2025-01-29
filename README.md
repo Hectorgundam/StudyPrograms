@@ -1,5 +1,4 @@
 # StudyPrograms
-<br>
 Repo containing most of the projects I've worked on 
 <br>
 It's a constant wip between projects from classes. practice and personal projects
