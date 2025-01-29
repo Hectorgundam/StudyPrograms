@@ -11,9 +11,10 @@
 # SortedFiles folder structure is as follows 
 # SortedDocuments - For files with extensions: txt, doc, docx, pdf, pptx, xlsx 
 # SortedAudio - For files with extensions: mp3, wav, flac
-# SortedVideo - For files with extensions: mp4, avi, flac
+# SortedVideo - For files with extensions: mp4, avi
 # SortedFiles - For files with extensions: zip, rar, tar, exe, dmg
 # SortedOther - For any other files that don't match the previous ones 
+# SortedPepakira - For any pepakura files (more of a personal use for crafting projects)
 
 # Additional file types can be added to the dictionary as needed 
 
@@ -44,11 +45,12 @@ sorted_folders = {
 
 }
 
-# Ensure all sorting folders exist
+# Making sure the sorting folders we're using exist or not 
 for folder in sorted_folders.values():
     os.makedirs(folder, exist_ok=True)
 
-# Define file type categories and their destination folders
+# The file extensions that the program will handle are defined here 
+# More extensions can be added as needed
 extensions = {
 
     # Document file extensions
@@ -86,10 +88,11 @@ extensions = {
     # Pepakura File (Custom input for files I use in papercraft)
     ".pdo": "Pepakura",
 
-    
+
 }
 
-# Function to handle duplicate files
+# Managing duplicate files
+# If there's a file with the same name it adds (#) to make sure the files aren't replaced 
 def get_unique_filename(destination_path):
     """Ensures the file/folder name is unique before moving by appending a number."""
     if not os.path.exists(destination_path):
@@ -105,9 +108,10 @@ def get_unique_filename(destination_path):
     return destination_path
 
 # Log file path
+# Log file where the program will add the activity details
 log_file_path = os.path.join(sorted_base_dir, "file_organizer_log.txt")
 
-# Open log file for writing
+# Opening the log file for writing
 with open(log_file_path, "w") as log_file:
     log_file.write(f"File Organizer Log - {datetime.datetime.now()}\n")
     log_file.write("=" * 50 + "\n")
