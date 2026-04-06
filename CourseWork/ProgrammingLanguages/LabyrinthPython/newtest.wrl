@@ -1,0 +1,989 @@
+#VRML V2.0 utf8
+
+NavigationInfo {
+  avatarSize [0.25, 2, 0.75]
+}
+
+DEF Floor Transform {
+  translation 0 -2.0 0
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["brick.png"] }
+      }
+      geometry Box {
+        size 10 0.1 10
+      }
+    }
+  ]
+}
+
+DEF Box1 Transform {
+  translation -3.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box2 Transform {
+  translation -2.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box3 Transform {
+  translation -1.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box4 Transform {
+  translation -0.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box5 Transform {
+  translation 0.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box6 Transform {
+  translation 1.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box7 Transform {
+  translation 2.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box8 Transform {
+  translation 3.5 0 -3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box9 Transform {
+  translation 3.5 0 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box10 Transform {
+  translation -3.5 0 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Cone1 Transform {
+  translation -2.5 0 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Box11 Transform {
+  translation -1.5 0 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box12 Transform {
+  translation -0.5 0 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box13 Transform {
+  translation 0.5 0 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Cone2 Transform {
+  translation 1.5 0 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Box14 Transform {
+  translation 3.5 0 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box15 Transform {
+  translation -3.5 0 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box16 Transform {
+  translation 3.5 0 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box17 Transform {
+  translation -3.5 0 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Cone3 Transform {
+  translation -1.5 0 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Box18 Transform {
+  translation -0.5 0 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box19 Transform {
+  translation 0.5 0 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box20 Transform {
+  translation 1.5 0 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Cone4 Transform {
+  translation 2.5 0 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Box21 Transform {
+  translation 3.5 0 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box22 Transform {
+  translation -3.5 0 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Cone5 Transform {
+  translation -1.5 0 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Cone6 Transform {
+  translation -0.5 0 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Cone7 Transform {
+  translation 0.5 0 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Cone8 Transform {
+  translation 1.5 0 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Cone9 Transform {
+  translation 2.5 0 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Cone {
+        height 4.0
+        bottomRadius 0.5
+        side TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}
+
+DEF Box23 Transform {
+  translation 3.5 0 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box24 Transform {
+  translation -3.5 0 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box25 Transform {
+  translation -3.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box26 Transform {
+  translation -2.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box27 Transform {
+  translation -1.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box28 Transform {
+  translation -0.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box29 Transform {
+  translation 0.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box30 Transform {
+  translation 1.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box31 Transform {
+  translation 2.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF Box32 Transform {
+  translation 3.5 0 3.5
+  children [
+    Shape {
+      appearance Appearance {
+        texture ImageTexture { url ["hauntedWalls.png"] }
+      }
+      geometry Box {
+        size 1 4.0 1
+      }
+    }
+  ]
+}
+
+DEF PathTile1 Transform {
+  translation -3.5 -1.9 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile2 Transform {
+  translation -2.5 -1.9 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile3 Transform {
+  translation -1.5 -1.9 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile4 Transform {
+  translation -0.5 -1.9 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile5 Transform {
+  translation 0.5 -1.9 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile6 Transform {
+  translation 1.5 -1.9 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile7 Transform {
+  translation 2.5 -1.9 -2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile8 Transform {
+  translation 2.5 -1.9 -1.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile9 Transform {
+  translation 2.5 -1.9 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile10 Transform {
+  translation 1.5 -1.9 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile11 Transform {
+  translation 0.5 -1.9 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile12 Transform {
+  translation -0.5 -1.9 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile13 Transform {
+  translation -1.5 -1.9 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile14 Transform {
+  translation -2.5 -1.9 -0.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile15 Transform {
+  translation -2.5 -1.9 0.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile16 Transform {
+  translation -2.5 -1.9 1.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile17 Transform {
+  translation -2.5 -1.9 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile18 Transform {
+  translation -1.5 -1.9 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile19 Transform {
+  translation -0.5 -1.9 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile20 Transform {
+  translation 0.5 -1.9 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile21 Transform {
+  translation 1.5 -1.9 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile22 Transform {
+  translation 2.5 -1.9 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+
+DEF PathTile23 Transform {
+  translation 3.5 -1.9 2.5
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1 1 0
+        }
+      }
+      geometry Box {
+        size 0.8 0.1 0.8
+      }
+    }
+  ]
+}
+

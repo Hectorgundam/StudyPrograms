@@ -1,0 +1,10 @@
+..........
+.BBBBBBBB.
+.*..  ..B.
+.BCBBBC.B.
+.B......B.
+.B.CBBBCB.
+.B.CCCCCB.
+.B......+.
+.BBBBBBBB.
+..........
