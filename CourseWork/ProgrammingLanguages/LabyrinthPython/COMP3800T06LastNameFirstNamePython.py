@@ -1,444 +1,839 @@
+# Upload Assignment: Python Investigation 
+# COMP3800 - Programming Languages
+# Professor Jose Navarro Figueroa
+
+# Labyrinth Group Assignment
+
+# Group Members:
+# Juan Pacheco Nadal
+# Gian Peña Bartolomei
+# Charleen Ramirez Rios
+# Diego Reyes Aquino
+
+# Due Date: 2026-04-08
+
+# Program Description:
+# A program that solves a labyrinth file provided by a user and generates a VRML file from it. 
+
+
 import os
 
-def get_full_path(filename):
-    script_folder = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(script_folder, filename)
 
-def get_yes_no_input(prompt):
+# Function Name: getFullPath
+# Objective: Determine the full path of a file based on the folder where the Python program is stored.
+# Parameters:
+# fileName - name of the file that will be searched or created
+# Pre-conditions: fileName must be a valid text string. The Python program must already be saved in a valid folder.
+# Post-conditions: The function returns the full path to the file inside the same folder as the Python program.
+# Author: Charleen Ramirez Rios
+# Creation date: 2026-03-21
+def getFullPath(fileName):
+
+    scriptFolder = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(scriptFolder, fileName)
+
+
+# Function Name: getYesNoInput
+# Objective: Request a yes or no response from the user and validate it.
+# Parameters:
+# promptMessage - the message that's going to be displayed to the user
+# Pre-conditions: promptMessage contains a yes or no question that is being asked to the user.
+# Post-conditions: The function returns true if the user enters "S" or "s", and false if the user enters "N" or "n".
+# Author: Charleen Ramirez Rios
+# Creation date: 2026-03-21
+def getYesNoInput(promptMessage):
+
     while True:
-        user_input = input(prompt)
 
-        if len(user_input) == 0:
+        userInput = input(promptMessage)
+
+        if len(userInput) == 0:
             continue
 
-        c = user_input[0]
+        # Only the first character is checked in case the user enters a longer response such as "Si" or "No". 
+        firstCharacter = userInput[0]
 
-        if c == "S" or c == "s":
+        if firstCharacter == "S" or firstCharacter == "s":
             return True
-        if c == "N" or c == "n":
+
+        if firstCharacter == "N" or firstCharacter == "n":
             return False
 
-        print("Invalid input. Enter S or N.")
+        print("Invalid input. Please enter S for yes or N for no.")
 
 
-def print_line_to_screen_and_file(text, out_file):
-    print(text)
+# Function Name: printLineToScreenAndFile
+# Objective: Print one line of text onto the screen and to an output file if one is being used.
+# Parameters:
+# textLine - has the line of text that will be printed
+# outputFile - file object used to print to the output file if one is being used
+# Pre-conditions: textLine must contain valid text. The decision to print to an output file or not is already made and passed 
+# through outputFile.
+# Post-conditions: The text line is printed to the screen and to the output file if one is being used.
+# Author: Charleen Ramirez Rios, Diego Reyes Aquino
+# Creation date: 2026-03-22
+def printLineToScreenAndFile(textLine, outputFile):
 
-    if out_file is not None:
-        out_file.write(text + "\n")
+    print(textLine)
+
+    if outputFile is not None:
+
+        outputFile.write(textLine + "\n")
 
 
-def print_grid_to_screen_and_file(grid, rows, out_file):
-    for r in range(rows):
-        print_line_to_screen_and_file(grid[r], out_file)
+# Function Name: printGridToScreenAndFile
+# Objective: Print the rows of the maze or solved maze to the screen and to an output file if one is being used.
+# Parameters:
+# grid - list that contains the maze or solved maze rows
+# totalRows - number of rows to print
+# outputFile - file object used to print to the output file if one is being used
+# Pre-conditions: grid has to contain a valid number of rows and they need to be consistent. The decision to print to an output file or 
+# not is already made and passed through outputFile.
+# Post-conditions: The maze rows are printed to the screen and to the output file if one is being used.
+# Author: Charleen Ramirez Rios, Diego Reyes Aquino
+# Creation date: 2026-03-21
+def printGridToScreenAndFile(grid, totalRows, outputFile):
 
+    for currentRow in range(totalRows):
 
+        printLineToScreenAndFile(grid[currentRow], outputFile)
 
-def read_maze_file():
-    user_input = input("Enter maze file name: ").strip()
+# Function Name: readMazeFile
+# Objective: Read a text file containing the maze and store it in the maze structure while making sure that it is rectangular.
+# Parameters:
+# This function does not receive parameters directly because it asks the user for the file name.
+# Pre-conditions: The user enters the name of an existing text file and it is spelled correctly. The file has to contain only text. 
+# The maze must be rectangular.
+# Post-conditions: The maze list will contain all the rows from the file maze, totalRows and totalColumns will contain the total number 
+# of rows and columns respectively, and the function itself will return true if it was able to complete this process and false if it 
+# encountered an error.
+# Author: Charleen Ramirez Rios, Diego Reyes Aquino
+# Creation date: 2026-03-21
+def readMazeFile():
 
-    if len(user_input) >= 4 and user_input[-4:] == ".txt":
-        filename = user_input
+    userInput = input("Enter the maze file name: ").strip()
+
+    if len(userInput) >= 4 and userInput[-4:] == ".txt":
+
+        fileName = userInput
+
     else:
-        filename = user_input + ".txt"
 
-    full_path = get_full_path(filename)
+        fileName = userInput + ".txt"
+
+    completePath = getFullPath(fileName)
 
     maze = []
 
     try:
-        file = open(full_path, "r")
+
+        file = open(completePath, "r")
+
     except:
-        print("Could not open file:", filename)
-        print("Looking in:", full_path)
+
+        print("Could not open file:", fileName)
+        print("Looking in:", completePath)
         return [], 0, 0, False
 
-    cols = -1
+    # The first row determines how many columns the maze should have
+    totalColumns = -1
 
-    for line in file:
-        line = line.rstrip("\n")
+    for currentLine in file:
 
-        if cols == -1:
-            cols = len(line)
+        currentLine = currentLine.rstrip("\n")
 
-        if len(line) != cols:
+        if totalColumns == -1:
+
+            totalColumns = len(currentLine)
+
+        # Every row after the first one must match that same width.
+        if len(currentLine) != totalColumns:
+
             print("Error: maze must be rectangular.")
             file.close()
             return [], 0, 0, False
 
-        maze.append(line)
+        maze.append(currentLine)
 
     file.close()
 
-    rows = len(maze)
+    totalRows = len(maze)
 
-    if rows == 0:
+    if totalRows == 0:
+
         print("Error: file is empty.")
         return [], 0, 0, False
 
-    return maze, rows, cols, True
+    return maze, totalRows, totalColumns, True
 
 
-def validate_maze_size(rows, cols):
-    if rows < 8 or cols < 8:
+# Function Name: getTextureFileName
+# Objective: Request the name of a texture file from the user and validate it.
+# Parameters:
+# promptMessage - the message that's going to be displayed to the user
+# Pre-conditions: promptMessage contains a valid question that is being asked to the user. The texture file must exist in the same 
+# folder as the Python program and it must contain a valid image extension.
+# Post-conditions: The function returns the valid name of the texture file once the user enters an existing file with a valid image 
+# extension.
+# Author: Charleen Ramirez Rios, Juan Pachecho Nadal, Diego Reyes Aquino, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def getTextureFileName(promptMessage):
+
+    while True:
+
+        fileName = input(promptMessage).strip()
+
+        if "." not in fileName:
+
+            print("Error: Please include the file extension.")
+            continue
+
+        validExtensions = [".jpg", ".jpeg", ".png"]
+
+        isValidExtension = False
+
+        for currentExtension in validExtensions:
+
+            if fileName.lower().endswith(currentExtension):
+
+                isValidExtension = True
+                break
+
+        if not isValidExtension:
+
+            print("Error: Invalid file extension. Please enter a .jpg, .jpeg, or .png file.")
+            continue
+
+        completePath = getFullPath(fileName)
+
+        if not os.path.isfile(completePath):
+
+            print("Error: File doesn't exist. Please enter a valid file name.")
+            continue
+
+        return fileName
+
+
+# Function Name: getVrmlFileName
+# Objective: Request the name of the VRML output file from the user and validate it.
+# Parameters:
+# promptMessage - the message that's going to be displayed to the user
+# Pre-conditions: promptMessage contains a valid question that is being asked to the user.
+# Post-conditions: The function returns a valid VRML file name. If the user does not include an extension, the function adds .wrl. 
+# If the user includes an invalid extension, the function asks again.
+# Author: Charleen Ramirez Rios, Diego Reyes Aquino, Juan Pachecho Nadal
+# Creation date: 2026-03-26
+def getVrmlFileName(promptMessage):
+
+    while True:
+
+        fileName = input(promptMessage).strip()
+
+        if fileName == "":
+
+            print("Error: File name cannot be empty.")
+            continue
+
+        # If the user only types a name with no file extension, the program adds the VRML extension
+        if "." not in fileName:
+
+            fileName += ".wrl"
+            return fileName
+
+        if fileName.lower().endswith(".wrl"):
+
+            return fileName
+
+        print("Error: VRML file has to have a .wrl extension.")
+        print("Please enter a valid file name or do not include extension.")
+
+
+# Function Name: validateMazeSize
+# Objective: Validate that the maze meets the required size limits.
+# Parameters:
+# totalRows and totalColumns - number of rows and columns in the maze respectively
+# Pre-conditions: totalRows and totalColumns amounts must already be set by readMazeFile.
+# Post-conditions: The function returns true if the maze meets the size requirements and returns false if it doesn't meet 
+# the requirements.
+# Author: Juan Pachecho Nadal, Diego Reyes Aquino, Charleen Ramirez Rios
+# Creation date: 2026-03-24
+def validateMazeSize(totalRows, totalColumns):
+
+    if totalRows < 8 or totalColumns < 8:
+
         print("Error: maze must be at least 8 rows and 8 columns.")
         return False
 
-    if rows > 64 or cols > 64:
+    if totalRows > 64 or totalColumns > 64:
+
         print("Error: maze cannot exceed 64 rows or 64 columns.")
         return False
 
     return True
 
 
-def find_start_and_exit(maze, rows, cols):
-    start_r = -1
-    start_c = -1
-    end_r = -1
-    end_c = -1
+# Function Name: findStartAndExit
+# Objective: Locate the starting point and exit point inside the maze.
+# Parameters:
+# maze - list that contains the maze
+# totalRows and totalColumns - the number of rows and columns in the maze respectively
+# Pre-conditions: maze must contain the full maze, and totalRows and totalColumns must represent the accurate dimensions of the maze.
+# Post-conditions: The function returns true if it was able to locate the starting point and exit point rows and columns, and sets 
+# their values respectively. If it's unable to locate them correctly it returns false with an error message.
+# Author: Gian Peña Bartolomei, Charleen Ramirez Rios, Diego Reyes Aquino
+# Creation date: 2026-03-25
+def findStartAndExit(maze, totalRows, totalColumns):
 
-    start_count = 0
-    end_count = 0
+    startRow = -1
+    startColumn = -1
+    exitRow = -1
+    exitColumn = -1
 
-    for r in range(rows):
-        for c in range(cols):
-            ch = maze[r][c]
+    startCount = 0
+    exitCount = 0
 
-            if ch == "*":
-                start_count += 1
-                start_r = r
-                start_c = c
+    for currentRow in range(totalRows):
 
-            if ch == "+":
-                end_count += 1
-                end_r = r
-                end_c = c
+        for currentColumn in range(totalColumns):
 
-    if start_count != 1:
-        print("Error: maze must contain exactly one start point (*).")
+            currentCharacter = maze[currentRow][currentColumn]
+
+            if currentCharacter == "*":
+
+                startCount += 1
+                startRow = currentRow
+                startColumn = currentColumn
+
+            if currentCharacter == "+":
+
+                exitCount += 1
+                exitRow = currentRow
+                exitColumn = currentColumn
+
+    if startCount != 1:
+
+        print("Error: maze must contain exactly one starting point (*).")
         return -1, -1, -1, -1, False
 
-    if end_count != 1:
+    if exitCount != 1:
+
         print("Error: maze must contain exactly one exit point (+).")
         return -1, -1, -1, -1, False
 
-    return start_r, start_c, end_r, end_c, True
+    return startRow, startColumn, exitRow, exitColumn, True
 
 
-def step_dir_name(from_r, from_c, to_r, to_c):
-    if to_r == from_r and to_c == from_c + 1:
+# Function Name: stepDirectionName
+# Objective: Determine the movement direction between two coordinates and define it as a word rather than logic for printing.
+# Parameters:
+# fromRow - current row
+# fromColumn - current column
+# toRow - destination row
+# toColumn - destination column
+# Pre-conditions: The coordinates must represent cells in the maze that are near or adjacent to each other.
+# Post-conditions: The function returns the direction as a string that is easier for the user to read when printed.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios
+# Creation date: 2026-03-27
+def stepDirectionName(fromRow, fromColumn, toRow, toColumn):
+
+    if toRow == fromRow and toColumn == fromColumn + 1:
         return "right"
-    if to_r == from_r and to_c == from_c - 1:
+
+    if toRow == fromRow and toColumn == fromColumn - 1:
         return "left"
-    if to_r == from_r - 1 and to_c == from_c:
+
+    if toRow == fromRow - 1 and toColumn == fromColumn:
         return "up"
+
     return "down"
 
 
-def is_walkable(cell):
+# Function Name: isWalkable
+# Objective: Determine if a maze cell can be used as part of the solution path.
+# Parameters:
+# cell - character stored in the current maze position
+# Pre-conditions: cell must contain a valid character from the maze.
+# Post-conditions: The function returns true if the cell can be walked through and false otherwise.
+# Author: Charleen Ramirez Rios
+# Creation date: 2026-03-27
+def isWalkable(cell):
+
     if cell == "." or cell == " " or cell == "*" or cell == "+":
         return True
+
     return False
 
 
-def solve_maze(original, rows, cols, show_process, out_file):
-    work = []
-    for r in range(rows):
-        work.append(original[r])
+# Function Name: solveMaze
+# Objective: Solve the maze by traversing it, backtracking if dead ends are encountered, and storing the final route.
+# Parameters:
+# originalMaze - original maze list
+# totalRows and totalColumns - number of rows and columns in the maze respectively
+# showProcess - stores if the user wants to print the solution process or not
+# outputFile - file object used if the user decides to print the process to an output file
+# Pre-conditions: The maze has to meet the required parameters, and the start point and exit point must already be determined 
+# before the solution can be completed.
+# Post-conditions: The maze is solved if a solution exists, the final route is stored in solvedMaze and in the path structure, 
+# and the function returns true. If there is no solution, the function returns false.
+# Author: Charleen Ramirez Rios, Diego  Reyes Aquino
+# Creation date: 2026-03-26
+def solveMaze(originalMaze, totalRows, totalColumns, showProcess, outputFile):
 
-    start_r, start_c, end_r, end_c, found_points = find_start_and_exit(original, rows, cols)
+    workingMaze = []
 
-    if not found_points:
+    for currentRow in range(totalRows):
+
+        workingMaze.append(originalMaze[currentRow])
+
+    startRow, startColumn, exitRow, exitColumn, foundPoints = findStartAndExit(originalMaze, totalRows, totalColumns)
+
+    if not foundPoints:
         return [], [], False
 
-    visited = []
-    for r in range(rows):
-        visited_row = []
-        for c in range(cols):
-            visited_row.append(False)
-        visited.append(visited_row)
+    visitedPositions = []
 
-    path_r = []
-    path_c = []
+    for currentRow in range(totalRows):
 
-    dr = [0, -1, 0, 1]
-    dc = [1, 0, -1, 0]
+        visitedRow = []
 
-    path_r.append(start_r)
-    path_c.append(start_c)
-    visited[start_r][start_c] = True
+        for currentColumn in range(totalColumns):
 
-    total_moves = 0
+            visitedRow.append(False)
 
-    if show_process:
-        print_line_to_screen_and_file("", out_file)
-        print_line_to_screen_and_file("Solution Process:", out_file)
-        print_line_to_screen_and_file(
-            "The user entered the maze at (" + str(start_r) + "," + str(start_c) + ").",
-            out_file
-        )
+        visitedPositions.append(visitedRow)
 
-    while len(path_r) > 0:
-        cur_r = path_r[len(path_r) - 1]
-        cur_c = path_c[len(path_c) - 1]
+    pathRows = []
+    pathColumns = []
 
-        if cur_r == end_r and cur_c == end_c:
-            solved = []
-            for r in range(rows):
-                solved.append(original[r])
+    # These lists define the order the little rat tries to move: right, up, left, then down
+    rowChanges = [0, -1, 0, 1]
+    columnChanges = [1, 0, -1, 0]
 
-            for i in range(len(path_r)):
-                rr = path_r[i]
-                cc = path_c[i]
+    pathRows.append(startRow)
+    pathColumns.append(startColumn)
+    visitedPositions[startRow][startColumn] = True
 
-                row_as_list = list(solved[rr])
+    totalMoves = 0
 
-                if row_as_list[cc] != "*" and row_as_list[cc] != "+":
-                    row_as_list[cc] = "o"
+    if showProcess:
 
-                solved[rr] = "".join(row_as_list)
+        printLineToScreenAndFile("", outputFile)
+        printLineToScreenAndFile("Solution Process:", outputFile)
+        printLineToScreenAndFile("The little rat entered the maze at (" + str(startRow) + "," + str(startColumn) + ").", outputFile)
 
-            if show_process:
-                print_line_to_screen_and_file(
-                    "The user reached the exit at (" + str(end_r) + "," + str(end_c) + ") after " +
-                    str(total_moves) + " step" + ("" if total_moves == 1 else "s") + ".",
-                    out_file
-                )
+    while len(pathRows) > 0:
 
-            path = []
-            for i in range(len(path_r)):
-                path.append((path_r[i], path_c[i]))
+        # The current position is always going to be the last position stored in the path
+        currentRow = pathRows[len(pathRows) - 1]
+        currentColumn = pathColumns[len(pathColumns) - 1]
 
-            return solved, path, True
+        if currentRow == exitRow and currentColumn == exitColumn:
+
+            solvedMaze = []
+
+            for mazeRow in range(totalRows):
+
+                solvedMaze.append(originalMaze[mazeRow])
+
+            for pathIndex in range(len(pathRows)):
+
+                solutionRow = pathRows[pathIndex]
+                solutionColumn = pathColumns[pathIndex]
+
+                rowAsList = list(solvedMaze[solutionRow])
+
+                # Only open spaces that are part of the final route are marked with "o",
+                # the start and exit symbols stay the same
+                if rowAsList[solutionColumn] != "*" and rowAsList[solutionColumn] != "+":
+
+                    rowAsList[solutionColumn] = "o"
+
+                solvedMaze[solutionRow] = "".join(rowAsList)
+
+            if showProcess:
+
+                printLineToScreenAndFile("The little rat reached the exit at (" + str(exitRow) + "," + str(exitColumn) + ") after "
+                    + str(totalMoves) + " step" + ("" if totalMoves == 1 else "s") + ".", outputFile)
+
+            finalPath = []
+
+            for pathIndex in range(len(pathRows)):
+
+                finalPath.append((pathRows[pathIndex], pathColumns[pathIndex]))
+
+            return solvedMaze, finalPath, True
 
         moved = False
 
-        for d in range(4):
-            nr = cur_r + dr[d]
-            nc = cur_c + dc[d]
+        for directionIndex in range(4):
 
-            if nr < 0 or nr >= rows or nc < 0 or nc >= cols:
+            nextRow = currentRow + rowChanges[directionIndex]
+            nextColumn = currentColumn + columnChanges[directionIndex]
+
+            if nextRow < 0 or nextRow >= totalRows or nextColumn < 0 or nextColumn >= totalColumns:
                 continue
 
-            cell = work[nr][nc]
+            currentCell = workingMaze[nextRow][nextColumn]
 
-            if not is_walkable(cell):
+            if not isWalkable(currentCell):
                 continue
 
-            if visited[nr][nc]:
+            if visitedPositions[nextRow][nextColumn]:
                 continue
 
-            visited[nr][nc] = True
-            path_r.append(nr)
-            path_c.append(nc)
-            total_moves += 1
+            visitedPositions[nextRow][nextColumn] = True
+            pathRows.append(nextRow)
+            pathColumns.append(nextColumn)
+            totalMoves += 1
             moved = True
 
-            if show_process:
-                direction = step_dir_name(cur_r, cur_c, nr, nc)
-                print_line_to_screen_and_file(
-                    "Move " + direction + " to (" + str(nr) + "," + str(nc) + ").",
-                    out_file
-                )
+            if showProcess:
+
+                directionName = stepDirectionName(currentRow, currentColumn, nextRow, nextColumn)
+                printLineToScreenAndFile("Move " + directionName + " to (" + str(nextRow) + "," + str(nextColumn) + ").",outputFile)
 
             break
 
         if moved:
             continue
 
-        if show_process:
-            print_line_to_screen_and_file(
-                "Dead end at (" + str(cur_r) + "," + str(cur_c) + "). Backtracking.",
-                out_file
+        if showProcess:
+
+            printLineToScreenAndFile(
+                "Dead end at (" + str(currentRow) + "," + str(currentColumn) + "). Backtracking.",
+                outputFile
             )
 
-        if work[cur_r][cur_c] != "*" and work[cur_r][cur_c] != "+":
-            row_as_list = list(work[cur_r])
-            row_as_list[cur_c] = "#"
-            work[cur_r] = "".join(row_as_list)
+        if workingMaze[currentRow][currentColumn] != "*" and workingMaze[currentRow][currentColumn] != "+":
 
-        path_r.pop()
-        path_c.pop()
+            rowAsList = list(workingMaze[currentRow])
+
+            # A dead end is marked with a temporary "#" so the program doesn't try to use that same deadend route again
+            rowAsList[currentColumn] = "#"
+            workingMaze[currentRow] = "".join(rowAsList)
+
+        # Removing the last position from the path is what does the backtracking in the labyrinth
+        pathRows.pop()
+        pathColumns.pop()
 
     return [], [], False
 
 
-def grid_to_vrml_coords(row, col, maze_width, maze_height):
-    x = col - (maze_width / 2.0) + 0.5
-    z = row - (maze_height / 2.0) + 0.5
-    y = 0
-    return x, y, z
+# Function Name: gridToVrmlCoordinates
+# Objective: Convert the row and column coordinates of the maze into VRML coordinates.
+# Parameters:
+# row - row of the maze
+# column - column of the maze
+# mazeWidth and mazeHeight - width and height of the maze respectively
+# Pre-conditions: row and column must represent a valid maze position. mazeWidth and mazeHeight must contain the dimensions of the maze.
+# Post-conditions: The function returns the x, y, and z coordinates that correspond to that maze position in the VRML scene.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios
+# Creation date: 2026-03-26
+def gridToVrmlCoordinates(row, column, mazeWidth, mazeHeight):
+
+    # The maze uses row and column positions
+    # But VRML places objects around/relative to the center of the scene, so the coordinates need to be adjusted
+    xCoordinate = column - (mazeWidth / 2.0) + 0.5
+    zCoordinate = row - (mazeHeight / 2.0) + 0.5
+    yCoordinate = 0
+
+    return xCoordinate, yCoordinate, zCoordinate
 
 
-def build_vrml_header():
-    text = ""
-    text += "#VRML V2.0 utf8\n\n"
-    text += "NavigationInfo {\n"
-    text += "  avatarSize [0.25, 2, 0.75]\n"
-    text += "}\n\n"
-    return text
+# Function Name: buildVrmlHeader
+# Objective: Generate the header and navigation section of the VRML file.
+# Parameters:
+# This function does not receive parameters.
+# Pre-conditions: None.
+# Post-conditions: The function returns the text that represents the header and navigation information of the VRML file.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def buildVrmlHeader():
+
+    vrmlText = ""
+    vrmlText += "#VRML V2.0 utf8\n\n"
+    vrmlText += "NavigationInfo {\n"
+    vrmlText += "  avatarSize [0.25, 2, 0.75]\n"
+    vrmlText += "}\n\n"
+
+    return vrmlText
 
 
-def build_floor(maze_width, maze_height, wall_height, floor_texture):
-    floor_y = -(wall_height / 2.0)
+# Function Name: buildFloor
+# Objective: Generate the VRML code for the floor of the maze.
+# Parameters:
+# mazeWidth and mazeHeight - width and height of the maze respectively
+# wallHeight - height of the maze walls
+# floorTexture - name of the image file that will be used as the floor texture
+# Pre-conditions: mazeWidth, mazeHeight, and wallHeight must contain valid numeric values. floorTexture must contain a valid 
+# image file name.
+# Post-conditions: The function returns the VRML code that represents the floor of the maze.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def buildFloor(mazeWidth, mazeHeight, wallHeight, floorTexture):
 
-    text = ""
-    text += "DEF Floor Transform {\n"
-    text += "  translation 0 " + str(floor_y) + " 0\n"
-    text += "  children [\n"
-    text += "    Shape {\n"
-    text += "      appearance Appearance {\n"
-    text += "        texture ImageTexture { url [\"" + floor_texture + "\"] }\n"
-    text += "      }\n"
-    text += "      geometry Box {\n"
-    text += "        size " + str(maze_width) + " 0.1 " + str(maze_height) + "\n"
-    text += "      }\n"
-    text += "    }\n"
-    text += "  ]\n"
-    text += "}\n\n"
+    # The floor is lowered so the walls are on top of it instead of being centered through/colliding with the floor
+    floorPositionY = -(wallHeight / 2.0)
 
-    return text
+    vrmlText = ""
+    vrmlText += "DEF Floor Transform {\n"
+    vrmlText += "  translation 0 " + str(floorPositionY) + " 0\n"
+    vrmlText += "  children [\n"
+    vrmlText += "    Shape {\n"
+    vrmlText += "      appearance Appearance {\n"
+    vrmlText += "        texture ImageTexture { url [\"" + floorTexture + "\"] }\n"
+    vrmlText += "      }\n"
+    vrmlText += "      geometry Box {\n"
+    vrmlText += "        size " + str(mazeWidth) + " 0.1 " + str(mazeHeight) + "\n"
+    vrmlText += "      }\n"
+    vrmlText += "    }\n"
+    vrmlText += "  ]\n"
+    vrmlText += "}\n\n"
 
-
-def build_box(x, y, z, wall_height, wall_texture, index):
-    text = ""
-    text += "DEF Box" + str(index) + " Transform {\n"
-    text += "  translation " + str(x) + " " + str(y) + " " + str(z) + "\n"
-    text += "  children [\n"
-    text += "    Shape {\n"
-    text += "      appearance Appearance {\n"
-    text += "        texture ImageTexture { url [\"" + wall_texture + "\"] }\n"
-    text += "      }\n"
-    text += "      geometry Box {\n"
-    text += "        size 1 " + str(wall_height) + " 1\n"
-    text += "      }\n"
-    text += "    }\n"
-    text += "  ]\n"
-    text += "}\n\n"
-    return text
+    return vrmlText
 
 
-def build_cone(x, y, z, wall_height, wall_texture, index):
-    text = ""
-    text += "DEF Cone" + str(index) + " Transform {\n"
-    text += "  translation " + str(x) + " " + str(y) + " " + str(z) + "\n"
-    text += "  children [\n"
-    text += "    Shape {\n"
-    text += "      appearance Appearance {\n"
-    text += "        texture ImageTexture { url [\"" + wall_texture + "\"] }\n"
-    text += "      }\n"
-    text += "      geometry Cone {\n"
-    text += "        height " + str(wall_height) + "\n"
-    text += "        bottomRadius 0.5\n"
-    text += "        side TRUE\n"
-    text += "        bottom TRUE\n"
-    text += "      }\n"
-    text += "    }\n"
-    text += "  ]\n"
-    text += "}\n\n"
-    return text
+# Function Name: buildBox
+# Objective: Generate the VRML code for one box wall in the maze.
+# Parameters:
+# xCoordinate, yCoordinate, and zCoordinate - position of the box in the VRML scene
+# wallHeight - height of the wall
+# wallTexture - name of the image file that will be used as the wall texture
+# index - number used to identify the box object
+# Pre-conditions: The coordinates must be valid positions in the VRML scene. wallHeight must contain a valid numeric value. 
+# wallTexture must contain a valid image file name.
+# Post-conditions: The function returns the VRML code that represents one box wall.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def buildBox(xCoordinate, yCoordinate, zCoordinate, wallHeight, wallTexture, index):
+
+    vrmlText = ""
+    vrmlText += "DEF Box" + str(index) + " Transform {\n"
+    vrmlText += "  translation " + str(xCoordinate) + " " + str(yCoordinate) + " " + str(zCoordinate) + "\n"
+    vrmlText += "  children [\n"
+    vrmlText += "    Shape {\n"
+    vrmlText += "      appearance Appearance {\n"
+    vrmlText += "        texture ImageTexture { url [\"" + wallTexture + "\"] }\n"
+    vrmlText += "      }\n"
+    vrmlText += "      geometry Box {\n"
+    vrmlText += "        size 1 " + str(wallHeight) + " 1\n"
+    vrmlText += "      }\n"
+    vrmlText += "    }\n"
+    vrmlText += "  ]\n"
+    vrmlText += "}\n\n"
+
+    return vrmlText
 
 
-def build_solution_tile(x, z, tile_index, wall_height):
-    floor_y = -(wall_height / 2.0)
-    tile_y = floor_y + 0.1
+# Function Name: buildCone
+# Objective: Generate the VRML code for one cone wall in the maze.
+# Parameters:
+# xCoordinate, yCoordinate, and zCoordinate - position of the cone in the VRML scene
+# wallHeight - height of the cone
+# wallTexture - name of the image file that will be used as the wall texture
+# index - number used to identify the cone object
+# Pre-conditions: The coordinates must be valid positions in the VRML scene. wallHeight must contain a valid numeric value. 
+# wallTexture must contain a valid image file name.
+# Post-conditions: The function returns the VRML code that represents one cone wall.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def buildCone(xCoordinate, yCoordinate, zCoordinate, wallHeight, wallTexture, index):
 
-    text = ""
-    text += "DEF PathTile" + str(tile_index) + " Transform {\n"
-    text += "  translation " + str(x) + " " + str(tile_y) + " " + str(z) + "\n"
-    text += "  children [\n"
-    text += "    Shape {\n"
-    text += "      appearance Appearance {\n"
-    text += "        material Material {\n"
-    text += "          diffuseColor 1 1 0\n"
-    text += "        }\n"
-    text += "      }\n"
-    text += "      geometry Box {\n"
-    text += "        size 0.8 0.1 0.8\n"
-    text += "      }\n"
-    text += "    }\n"
-    text += "  ]\n"
-    text += "}\n\n"
-    return text
+    vrmlText = ""
+    vrmlText += "DEF Cone" + str(index) + " Transform {\n"
+    vrmlText += "  translation " + str(xCoordinate) + " " + str(yCoordinate) + " " + str(zCoordinate) + "\n"
+    vrmlText += "  children [\n"
+    vrmlText += "    Shape {\n"
+    vrmlText += "      appearance Appearance {\n"
+    vrmlText += "        texture ImageTexture { url [\"" + wallTexture + "\"] }\n"
+    vrmlText += "      }\n"
+    vrmlText += "      geometry Cone {\n"
+    vrmlText += "        height " + str(wallHeight) + "\n"
+    vrmlText += "        bottomRadius 0.5\n"
+    vrmlText += "        side TRUE\n"
+    vrmlText += "        bottom TRUE\n"
+    vrmlText += "      }\n"
+    vrmlText += "    }\n"
+    vrmlText += "  ]\n"
+    vrmlText += "}\n\n"
 
-
-def build_maze_objects(maze, rows, cols, wall_height, wall_texture):
-    text = ""
-    box_index = 1
-    cone_index = 1
-
-    for row in range(rows):
-        for col in range(cols):
-            ch = maze[row][col]
-            x, y, z = grid_to_vrml_coords(row, col, cols, rows)
-
-            if ch == "B":
-                text += build_box(x, 0, z, wall_height, wall_texture, box_index)
-                box_index += 1
-            elif ch == "C":
-                text += build_cone(x, 0, z, wall_height, wall_texture, cone_index)
-                cone_index += 1
-
-    return text
+    return vrmlText
 
 
-def build_solution_path(path, rows, cols, wall_height):
-    text = ""
-    tile_index = 1
+# Function Name: buildSolutionTile
+# Objective: Generate the VRML code for one tile that represents part of the solution path.
+# Parameters:
+# xCoordinate and zCoordinate - position of the tile in the VRML scene
+# tileIndex - number used to identify the tile object
+# wallHeight - height of the maze walls
+# Pre-conditions: The coordinates must be valid positions in the VRML scene. tileIndex must contain a valid number. wallHeight must contain a valid numeric value.
+# Post-conditions: The function returns the VRML code that represents one solution tile.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def buildSolutionTile(xCoordinate, zCoordinate, tileIndex, wallHeight):
 
-    for position in path:
-        row = position[0]
-        col = position[1]
-        x, y, z = grid_to_vrml_coords(row, col, cols, rows)
-        text += build_solution_tile(x, z, tile_index, wall_height)
-        tile_index += 1
+    floorPositionY = -(wallHeight / 2.0)
 
-    return text
+    # The solution tiles are placed slightly above the floor so they can be seen, otherwise they'd be colliding 
+    # with the floor and not visible in the scene
+    tilePositionY = floorPositionY + 0.1
+
+    vrmlText = ""
+    vrmlText += "DEF PathTile" + str(tileIndex) + " Transform {\n"
+    vrmlText += "  translation " + str(xCoordinate) + " " + str(tilePositionY) + " " + str(zCoordinate) + "\n"
+    vrmlText += "  children [\n"
+    vrmlText += "    Shape {\n"
+    vrmlText += "      appearance Appearance {\n"
+    vrmlText += "        material Material {\n"
+    vrmlText += "          diffuseColor 1 1 0\n"
+    vrmlText += "        }\n"
+    vrmlText += "      }\n"
+    vrmlText += "      geometry Box {\n"
+    vrmlText += "        size 0.8 0.1 0.8\n"
+    vrmlText += "      }\n"
+    vrmlText += "    }\n"
+    vrmlText += "  ]\n"
+    vrmlText += "}\n\n"
+
+    return vrmlText
 
 
-def write_vrml_file(filename, content):
-    full_path = get_full_path(filename)
+# Function Name: buildMazeObjects
+# Objective: Generate the VRML code for all wall objects in the maze.
+# Parameters:
+# maze - list that contains the maze
+# totalRows and totalColumns - number of rows and columns in the maze respectively
+# wallHeight - height of the maze walls
+# wallTexture - name of the image file that will be used as the wall texture
+# Pre-conditions: maze must contain a valid maze, totalRows and totalColumns must represent the correct maze dimensions, 
+# wallHeight must contain a valid numeric value, and wallTexture must contain a valid image file name.
+# Post-conditions: The function returns the VRML code for all box and cone walls in the maze.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def buildMazeObjects(maze, totalRows, totalColumns, wallHeight, wallTexture):
+
+    vrmlText = ""
+    boxIndex = 1
+    coneIndex = 1
+
+    for currentRow in range(totalRows):
+
+        for currentColumn in range(totalColumns):
+
+            currentCharacter = maze[currentRow][currentColumn]
+            xCoordinate, yCoordinate, zCoordinate = gridToVrmlCoordinates(currentRow, currentColumn, totalColumns, totalRows)
+
+            if currentCharacter == "B":
+
+                vrmlText += buildBox(xCoordinate, 0, zCoordinate, wallHeight, wallTexture, boxIndex)
+                boxIndex += 1
+
+            elif currentCharacter == "C":
+
+                vrmlText += buildCone(xCoordinate, 0, zCoordinate, wallHeight, wallTexture, coneIndex)
+                coneIndex += 1
+
+    return vrmlText
+
+
+# Function Name: buildSolutionPath
+# Objective: Generate the VRML code for all tiles that represent the final solution path.
+# Parameters:
+# path - list of coordinates that represent the final route of the maze
+# totalRows and totalColumns - number of rows and columns in the maze respectively
+# wallHeight - height of the maze walls
+# Pre-conditions: path must contain valid coordinates from the solved maze. totalRows and totalColumns must represent the correct maze dimensions. wallHeight must contain a valid numeric value.
+# Post-conditions: The function returns the VRML code for all tiles that represent the final solution path.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def buildSolutionPath(path, totalRows, totalColumns, wallHeight):
+
+    vrmlText = ""
+    tileIndex = 1
+
+    for currentPosition in path:
+
+        row = currentPosition[0]
+        column = currentPosition[1]
+        xCoordinate, yCoordinate, zCoordinate = gridToVrmlCoordinates(row, column, totalColumns, totalRows)
+        vrmlText += buildSolutionTile(xCoordinate, zCoordinate, tileIndex, wallHeight)
+        tileIndex += 1
+
+    return vrmlText
+
+
+# Function Name: writeVrmlFile
+# Objective: Create the VRML output file and write the generated VRML code into it.
+# Parameters:
+# fileName - name of the VRML file that will be created
+# content - text that will be written into the file
+# Pre-conditions: fileName must be a valid VRML file name. content must contain valid VRML text.
+# Post-conditions: The VRML output file is created in the same folder as the Python program if the process is successful. 
+# If the process fails, an error message is printed.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-26
+def writeVrmlFile(fileName, content):
+
+    completePath = getFullPath(fileName)
 
     try:
-        file = open(full_path, "w")
+
+        file = open(completePath, "w")
         file.write(content)
         file.close()
-        print("VRML file created successfully:", filename)
-        print("Saved in:", full_path)
+        print()
+        print("VRML file created successfully:", fileName)
+        print("Saved in:", completePath)
+        print()
+
     except:
+
         print("Error: Could not write VRML file.")
-        print("Tried to save in:", full_path)
+        print("Tried to save in:", completePath)
+        print()
 
 
+# Function Name: main
+# Objective: Execute the full process to read the maze, solve it, generate the VRML code, and create the output file.
+# Parameters:
+# This function does not receive parameters.
+# Pre-conditions: The maze file and texture files must exist in the same folder as the Python program. The maze must meet the 
+# required conditions to be solved.
+# Post-conditions: The solved maze is printed on the screen if a solution exists, the VRML code is generated, and the output 
+# file is created.
+# Author: Diego Reyes Aquino, Charleen Ramirez Rios, Juan Pachecho Nadal, Gian Peña Bartolomei
+# Creation date: 2026-03-21
 def main():
-    maze, rows, cols, ok = read_maze_file()
 
-    if not ok:
+    maze, totalRows, totalColumns, wasReadSuccessful = readMazeFile()
+
+    if not wasReadSuccessful:
+
         print("Failed to read maze.")
         return
 
-    if not validate_maze_size(rows, cols):
+    if not validateMazeSize(totalRows, totalColumns):
+
         print("Maze size validation failed.")
         return
 
-    print("\nMaze loaded successfully.")
-    print("Rows:", rows, " Cols:", cols)
+    # Leaving here for testing purposes in case there is a need to measure the size of the labyrinth
+    # print("\nMaze loaded successfully.")
+    # print("Rows:", totalRows, " Cols:", totalColumns)
+    # print()
+
+    showProcess = getYesNoInput("Show solution process on screen? (S for yes or N for no): ")
     print()
 
-    show_process = get_yes_no_input("Show solution process on screen? (S or N): ")
-    print()
+    wallHeight = float(input("Enter wall height in meters: "))
+    wallTexture = getTextureFileName("Enter wall texture file name: ")
+    floorTexture = getTextureFileName("Enter floor texture file name: ")
+    outputVrmlFileName = getVrmlFileName("Enter output VRML file name: ")
 
-    wall_height = float(input("Enter wall height in meters: "))
-    wall_texture = input("Enter wall texture file name: ").strip()
-    floor_texture = input("Enter floor texture file name: ").strip()
-    output_vrml = input("Enter output VRML file name: ").strip()
+    solvedMaze, solutionPath, wasSolvedSuccessfully = solveMaze(maze, totalRows, totalColumns, showProcess, None)
 
-    if len(output_vrml) < 4 or output_vrml[-4:] != ".wrl":
-        output_vrml += ".wrl"
-
-    solved, path, success = solve_maze(maze, rows, cols, show_process, None)
-
-    if not success:
+    if not wasSolvedSuccessfully:
+        
         print("No solution found.")
         return
 
@@ -446,15 +841,15 @@ def main():
     print("Solution:")
     print()
 
-    print_grid_to_screen_and_file(solved, rows, None)
+    printGridToScreenAndFile(solvedMaze, totalRows, None)
 
-    vrml_text = ""
-    vrml_text += build_vrml_header()
-    vrml_text += build_floor(cols, rows, wall_height, floor_texture)
-    vrml_text += build_maze_objects(maze, rows, cols, wall_height, wall_texture)
-    vrml_text += build_solution_path(path, rows, cols, wall_height)
+    vrmlText = ""
+    vrmlText += buildVrmlHeader()
+    vrmlText += buildFloor(totalColumns, totalRows, wallHeight, floorTexture)
+    vrmlText += buildMazeObjects(maze, totalRows, totalColumns, wallHeight, wallTexture)
+    vrmlText += buildSolutionPath(solutionPath, totalRows, totalColumns, wallHeight)
 
-    write_vrml_file(output_vrml, vrml_text)
+    writeVrmlFile(outputVrmlFileName, vrmlText)
 
 
 main()

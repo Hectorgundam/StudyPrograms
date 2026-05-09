@@ -1,8 +1,0 @@
-BBBBBBBB
-*......B
-BBBBBC.B
-B.C....B
-B...BBBB
-B.CCCC.B
-B......+
-BBBBBBBB
